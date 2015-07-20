@@ -1,0 +1,130 @@
+  <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+          <div class="pull-left">Image Title Goes Here</div>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
+  <ul id="grid" class="masonry grid effect-2">
+    <div class="grid-sizer"></div>
+    <li class="m-item">
+      <%= image_tag "paintings/1.jpg" %>
+    </li>
+    <li class="m-item">
+      <%= image_tag "paintings/10.JPG" %>
+    </li>
+    <li class="m-item">
+      <%= image_tag "paintings/11.jpg" %>
+    </li>    
+    <li class="m-item">
+      <%= image_tag "paintings/12.jpg" %>
+    </li>
+    <li class="m-item">
+      <%= image_tag "paintings/2.JPG" %>
+    </li>
+    <li class="m-item">
+      <%= image_tag "paintings/3.jpg" %>
+    </li>  
+    <li class="m-item">
+      <%= image_tag "paintings/4.JPG" %>
+    </li>
+    <li class="m-item">
+      <%= image_tag "paintings/5.JPG" %>
+    </li>
+    <li class="m-item">
+      <%= image_tag "paintings/6.jpg" %>
+    </li>
+    <li class="m-item">
+      <%= image_tag "paintings/1.jpg" %>
+    </li>
+    <li class="m-item">
+      <%= image_tag "paintings/10.JPG" %>
+    </li>
+    <li class="m-item">
+      <%= image_tag "paintings/11.jpg" %>
+    </li>    
+    <li class="m-item">
+      <%= image_tag "paintings/12.jpg" %>
+    </li>
+    <li class="m-item">
+      <%= image_tag "paintings/2.JPG" %>
+    </li>
+    <li class="m-item">
+      <%= image_tag "paintings/3.jpg" %>
+    </li>  
+    <li class="m-item">
+      <%= image_tag "paintings/4.JPG" %>
+    </li>
+    <li class="m-item">
+      <%= image_tag "paintings/5.JPG" %>
+    </li>
+    <li class="m-item">
+      <%= image_tag "paintings/6.jpg" %>
+    </li>
+    <li class="m-item">
+      <%= image_tag "paintings/1.jpg" %>
+    </li>
+    <li class="m-item">
+      <%= image_tag "paintings/10.JPG" %>
+    </li>
+    <li class="m-item">
+      <%= image_tag "paintings/11.jpg" %>
+    </li>    
+    <li class="m-item">
+      <%= image_tag "paintings/12.jpg" %>
+    </li>
+    <li class="m-item">
+      <%= image_tag "paintings/2.JPG" %>
+    </li>
+    <li class="m-item">
+      <%= image_tag "paintings/3.jpg" %>
+    </li>  
+    <li class="m-item">
+      <%= image_tag "paintings/4.JPG" %>
+    </li>
+    <li class="m-item">
+      <%= image_tag "paintings/5.JPG" %>
+    </li>
+    <li class="m-item">
+      <%= image_tag "paintings/6.jpg" %>
+    </li>      
+  </ul>
+
+  <!-- Please call pinit.js only once per page -->
+  <script type="text/javascript" async defer  data-pin-shape="round" data-pin-hover="true" src="//assets.pinterest.com/js/pinit.js"></script>
+
+<script language="javascript">
+
+  var $container = $('.masonry');
+  
+  // initialize Masonry after all images have loaded  
+  $container.imagesLoaded( function() {
+    $container.masonry({
+      itemSelector: '.m-item',
+      columnWidth: '.grid-sizer',
+      gutter: 10,
+      percentPosition: true   
+    });
+  });
+  
+  $(function(){
+      $('.masonry li img').on('click',function(){
+           var src = $(this).attr('src');
+           var img = '<img src="' + src + '" class="img-responsive"/>';
+           $('#myModal').modal();
+           $('#myModal').on('shown.bs.modal', function(){
+             $('#myModal .modal-body').html(img);   
+           });
+           $('#myModal').on('hidden.bs.modal', function(){
+               $('#myModal .modal-body').html('');
+           });
+      });  
+   })
+</script>

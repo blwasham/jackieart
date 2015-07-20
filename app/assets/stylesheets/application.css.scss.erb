@@ -1,0 +1,235 @@
+// include files
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "slick";
+@import 'slick-theme';
+
+// custom sass vars
+$ja-white: #F8F8F8;
+$ja-green: #D1E2E5;
+$ja-green-dark: #467B85;
+$ja-black: #181818;
+$ja-charcoal: #303030;
+$ja-nav-height: 44px;
+
+
+.green-text {color: $ja-green;}
+
+body {
+  //font-family: 'Lora', serif;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+	width: 100%;
+	height: 100%;
+	background-color: $ja-black;
+}
+
+a {
+  color: $ja-white;
+  &:hover { color: white;}
+}
+
+@media (max-width: $screen-sm-min) {
+  .nav>li>a, 
+  .nav>li>a:focus,
+  .nav>li>a:hover {
+    background: $ja-charcoal !important;
+    @include opacity(1);
+  }
+}
+
+.content {
+  height: inherit;
+}
+
+/* Navigation */
+.navbar {
+  z-index: 8675310; //place above pinterest buttons
+  font-size: 16px;
+    text-shadow: 2px 2px $ja-black;
+  //@include opacity(.75);
+  //background-color: $ja-charcoal;
+  height: $ja-nav-height;
+  min-height: $ja-nav-height;
+  a { color: $ja-white; }
+  a:hover { color: $ja-green; }
+}
+
+.navbar-brand {
+  font-family: 'Satisfy', cursive;
+  font-size: 25px;
+  text-shadow: 2px 2px #000;
+  padding: 10px 15px;
+  height: $ja-nav-height;
+}
+
+.nav>li>a{
+  padding: 12px 10px 10px 10px;
+}
+
+.nav>li>a:focus,
+.nav>li>a:hover,
+.nav .open>a,
+.nav .open>a:focus,
+.nav .open>a:hover,
+.dropdown-menu>li>a:focus,
+.dropdown-menu>li>a:hover {
+  background-color: transparent;
+  color: $ja-green;
+}
+
+.navbar-toggle .icon-bar {
+  background-color: $ja-white;
+}
+
+.about-img {
+  @extend .img-responsive; 
+  @extend .thumbnail; 
+  @extend .pull-left;
+  width: 350px; 
+  margin-right: 20px;
+}
+
+
+.gallery {
+  margin-top: $ja-nav-height;
+}
+
+.modal-dialog {
+  margin-top: $ja-nav-height !important;
+}
+
+/* SLICK CAROUSEL STYLES */
+.slick-carousel {
+  img {
+    width: 100%;
+    //height: 100%;
+    @extend .img-responsive;
+    @extend .center-block;
+  }
+
+  .slick-btns {
+    top: $ja-nav-height + 15  ;
+    position: absolute;
+  }
+
+  .slick-prev { 
+    @extend .slick-btns;
+    left: auto; 
+    right: 46; 
+  }
+  
+  .slick-next {
+    @extend .slick-btns;
+    right: 23;
+  }
+}
+
+.slick-slider {
+  margin-bottom: 0 !important;
+}
+
+
+/* MASONRY STYLES */
+.masonry {
+  margin-top: $ja-nav-height;
+  @extend .list-unstyled;
+  img {
+    @extend .img-responsive;
+    width: 100%;
+  }
+  .grid-sizer { width: 32%; }
+  .m-item {
+    margin-bottom: 10px; 
+    width: 32%;
+    cursor: pointer;
+    font-size: 12px;
+    color: $gray-light;
+  }
+}
+
+
+/* Scrolling/Fixed Background Styles */
+.cd-fixed-bg {
+	min-height: 100%;
+	background-size: cover;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: top center;
+  position: relative;
+}
+ 
+.cd-fixed-bg h1 {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  bottom: auto;
+  right: auto;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  width: 90%;
+  max-width: 1170px;
+  text-align: center;
+  font-size: 52px;
+  font-weight: 400;
+  text-shadow: 0 4px 3px $ja-black;
+  color: $ja-white;
+} 
+.cd-fixed-bg .subtext {
+  margin-top: 0px;
+  font-size: 25px;
+  text-shadow: 0 2px 1px $ja-black;
+  color: $ja-green; 
+}
+.cd-fixed-bg .social {
+  font-size: 26px;
+  margin-top: 10px;
+  text-shadow: 0 2px 2px $ja-black;
+  a {
+    color: $ja-white;
+    &:hover {color: $ja-green;}
+  }
+}
+ 
+.cd-fixed-bg.cd-bg-1 {
+  background-image: url(asset_path("photos/jackie_frederick_easels.jpg", image));
+}
+.cd-fixed-bg.cd-bg-2 {
+  background-image: url(asset_path("photos/IMG_1152.JPG", image));
+}
+.cd-fixed-bg.cd-bg-3 {
+  background-image: url(asset_path("photos/jackie_easels_face.jpg", image));
+}
+.cd-fixed-bg.cd-bg-4 {
+  background-image: url(asset_path("photos/pastels.jpg", image));
+}
+ 
+.cd-scrolling-bg {
+  background: $ja-charcoal;
+  border-top: 1px solid $ja-green;
+  border-bottom: 1px solid $ja-green;
+	min-height: 100%;
+}
+
+.cd-container {
+  padding: 25px 15px 25px 15px;
+  font-size: 18px;
+  color: $ja-white;
+}
+
+.media-heading {
+  color: $ja-green;
+}
+
+
+
+
+
+
+
