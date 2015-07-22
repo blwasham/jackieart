@@ -5,13 +5,14 @@
 @import "font-awesome";
 @import "slick";
 @import 'slick-theme';
+@import 'dataTables/bootstrap/3/jquery.dataTables.bootstrap';
 
 // custom sass vars
 $ja-white: #F8F8F8;
 $ja-green: #D1E2E5;
 $ja-green-dark: #467B85;
 $ja-black: #181818;
-$ja-charcoal: #303030;
+$ja-charcoal: #404040;
 $ja-nav-height: 44px;
 
 
@@ -23,7 +24,7 @@ body {
   font-size: 16px;
 	width: 100%;
 	height: 100%;
-	background-color: $ja-black;
+	background-color: $ja-charcoal;
 }
 
 a {
@@ -92,6 +93,11 @@ a {
   margin-right: 20px;
 }
 
+.paintings {
+  margin-top: $ja-nav-height;
+  background: $ja-white;
+  padding: 0 15px 0 15px
+}
 
 .gallery {
   margin-top: $ja-nav-height;
@@ -228,6 +234,12 @@ a {
 }
 
 
+.bootstrap_table {
+  @extend .table;
+  @extend .table-striped;
+  @extend .table-bordered;
+  @extend .table-condensed;
+}
 
 
 

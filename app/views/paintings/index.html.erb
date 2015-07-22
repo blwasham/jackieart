@@ -1,28 +1,48 @@
+<!-- move this to coffee script -->
+<script language="JavaScript">
+$(function() {
+  $('.datatable').DataTable({
+    // ajax: ...,
+    // autoWidth: false,
+    // pagingType: 'full_numbers',
+    // processing: true,
+    // serverSide: true,
 
+    // Optional, if you want full pagination controls.
+    // Check dataTables documentation to learn more about available options.
+    // http://datatables.net/reference/option/pagingType
+  })
+})
+</script>
+<div class="paintings">
 <h1>Listing paintings</h1>
 
-<table>
+<table class="datatable bootstrap_table">
+  <thead>
   <tr>
     <th>Name</th>
     <th>Description</th>
     <th>Price</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Actions</th>
   </tr>
-
+  </thead>
+  <tbody>
 <% @paintings.each do |painting| %>
   <tr>
     <td><%= painting.name %></td>
     <td><%= painting.description %></td>
     <td><%= painting.price %></td>
-    <td><%= link_to 'Show', painting %></td>
-    <td><%= link_to 'Edit', edit_painting_path(painting) %></td>
-    <td><%= link_to 'Destroy', painting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+    <td>
+      <%= link_to 'Show', painting, class: "btn btn-default" %>
+      <%= link_to 'Edit', edit_painting_path(painting), class: "btn btn-default" %>
+      <%= link_to 'Destroy', painting, method: :delete, class: "btn btn-default", data: { confirm: 'Are you sure?' } %>
+    </td>
+  </tr> 
 <% end %>
+</tbody>
 </table>
 
 <br />
 
 <%= link_to 'New Painting', new_painting_path %>
+</div>
