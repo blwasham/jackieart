@@ -1,83 +1,82 @@
 class PaintingsController < ApplicationController
-  # GET /paintings
-  # GET /paintings.json
-  def index
-    @paintings = Painting.all
 
+  def index
+    @painting = Painting.new
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @paintings }
     end
   end
 
-  # GET /paintings/1
-  # GET /paintings/1.json
+  def load
+    @paintings = Painting.all
+    
+    respond_to do |format|
+      format.json
+    end
+  end
+
   def show
     @painting = Painting.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @painting }
     end
   end
 
-  # GET /paintings/new
-  # GET /paintings/new.json
   def new
     @painting = Painting.new
 
     respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @painting }
+      format.html { render :index }
     end
   end
 
-  # GET /paintings/1/edit
   def edit
     @painting = Painting.find(params[:id])
+    
+    respond_to do |format|
+      format.html { render :index }
+    end
   end
 
-  # POST /paintings
-  # POST /paintings.json
   def create
     @painting = Painting.new(params[:painting])
-
+    
+    if params[:image_name].present?
+      preloaded = Cloudinary::PreloadedFile.new(params[:image_name])         
+      raise "Invalid upload signature" if !preloaded.valid?
+      params[:painting][:image_name] = preloaded.identifier
+    end
+binding.pry
     respond_to do |format|
       if @painting.save
-        format.html { redirect_to @painting, notice: 'Painting was successfully created.' }
-        format.json { render json: @painting, status: :created, location: @painting }
+        format.html { redirect_to paintings_path, notice: 'Painting was successfully created.' }
       else
-        format.html { render action: "new" }
-        format.json { render json: @painting.errors, status: :unprocessable_entity }
+        format.html { render :index }
       end
     end
   end
 
-  # PUT /paintings/1
-  # PUT /paintings/1.json
   def update
     @painting = Painting.find(params[:id])
 
     respond_to do |format|
       if @painting.update_attributes(params[:painting])
-        format.html { redirect_to @painting, notice: 'Painting was successfully updated.' }
-        format.json { head :no_content }
+        format.html { redirect_to paintings_path, notice: 'Painting was successfully updated.' }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @painting.errors, status: :unprocessable_entity }
+        format.html { render :index }
       end
     end
   end
 
-  # DELETE /paintings/1
-  # DELETE /paintings/1.json
   def destroy
     @painting = Painting.find(params[:id])
     @painting.destroy
 
     respond_to do |format|
-      format.html { redirect_to paintings_url }
-      format.json { head :no_content }
+      format.html { redirect_to :index }
     end
   end
 end

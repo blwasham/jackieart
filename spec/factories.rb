@@ -4,5 +4,6 @@ FactoryGirl.define do
     name "Really Awesome Painting"
     description "This is a really awesome painting"
     price_cents 100.00
+    image_name "really_awesome.jpg"
   end
 end

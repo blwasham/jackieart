@@ -1,10 +1,15 @@
 Jackieart::Application.routes.draw do
-  resources :paintings
-  root :to => 'pages#index'
+  resources :paintings do
+    collection do
+      post :load
+    end
+  end
+
   match "home" => "pages#index", :as => :home
   match "featured" => "pages#featured", :as => :featured
   match "gallery" => "pages#gallery", :as => :gallery
 
+  root :to => 'pages#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

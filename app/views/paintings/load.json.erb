@@ -1,0 +1,16 @@
+<% if @paintings.present? %>
+  {
+    "aaData":[
+      <% @paintings.each_with_index do |painting, i| %>
+        {
+          "DT_RowId":"<%= painting.id %>",
+          "0":"<%= painting.name %>",
+          "1":"<%= painting.price %>",
+          "2":"<%= painting.featured %>",
+          "3":"actions here"
+        }
+        <% if i+1 != @paintings.length %>, <% end %>
+      <% end %>
+    ]
+  }  
+<% end %>

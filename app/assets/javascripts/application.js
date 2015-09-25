@@ -18,4 +18,5 @@
 //= require jquery.slick
 //= require masonry.pkgd.min
 //= require imagesloaded.pkgd.min
+//= require cloudinary
 // require_tree .

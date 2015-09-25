@@ -1,3 +1,22 @@
+<%= cloudinary_js_config %>
+<script>
+  $(function(){
+    $('.cloudinary-fileupload').bind('cloudinarydone', function(e, data) {  
+      $('.preview').html(
+        $.cloudinary.image(data.result.public_id, 
+          { format: data.result.format, version: data.result.version, 
+            crop: 'fill', width: 150, height: 100 })
+      );    
+      $('.image_public_id').val(data.result.public_id);    
+      return true;
+    })
+    
+    $('.cloudinary-fileupload').bind('fileuploadprogress', function(e, data) { 
+      $(".upload_status").text("Uploading... " + Math.round((data.loaded * 100.0) / data.total) + "%");
+    })
+  })
+</script>
+
 <%= form_for(@painting) do |f| %>
   <% if @painting.errors.any? %>
     <div id="error_explanation">
@@ -22,6 +41,16 @@
   <div class="field">
     <%= f.label :price %><br />
     <%= f.number_field :price %>
+  </div>
+  <div class="field">
+    <%= label_tag :image_name %><br />
+    <%= f.cl_image_upload(:image_name, use_filename: true, unique_filename: false) %>
+    <div class="upload_status"></div>
+    <div class="preview"></div>
+  </div>
+  <div class="field">
+    <%= f.check_box :featured %>
+    <%= f.label :featured %>
   </div>
   <div class="actions">
     <%= f.submit %>
