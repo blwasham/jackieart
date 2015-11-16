@@ -19,6 +19,15 @@ require 'rails_helper'
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+
+# spec/spec_helper.rb
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end
+
 RSpec.configure do |config|
   
   config.include FactoryGirl::Syntax::Methods

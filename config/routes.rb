@@ -5,9 +5,9 @@ Jackieart::Application.routes.draw do
     end
   end
 
-  match "home" => "pages#index", :as => :home
-  match "featured" => "pages#featured", :as => :featured
-  match "gallery" => "pages#gallery", :as => :gallery
+  get "home" => "pages#index", :as => :home
+  get "featured" => "pages#featured", :as => :featured
+  get "gallery" => "pages#gallery", :as => :gallery
 
   root :to => 'pages#index'
 

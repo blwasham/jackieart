@@ -1,49 +1,41 @@
 <!-- move this to coffee script -->
 <script language="JavaScript">
-$(function() {
-  var paintings_table = $('#paintings_table').DataTable({
-    bJQueryUI : true,
-    bSort : false,
-    bPaginate : false,
-    oLanguage : { sSearch : "filter: " },
-    processing : true
-  })
+  $(document).ready(function(){
   
-  $("#paintings_table").ready(function(){
-    loadPaintings('paintings_table');
-  })
-  
-  function loadPaintings(loading_div) {
-    $.ajax({
-      type: 'POST',
-      dataType: 'JSON',
-      cache: false,
-      url: "<%= load_paintings_path %>",
-      beforeSend: function() {
-        $("#table_loading").css('visibility', 'visible')
-      },
-      success: function(json){
-        $('#paintings_table').dataTable().fnClearTable();
-        $('#paintings_table').dataTable().fnAddData(json.aaData);
-        $('#paintings_table').dataTable().fnDraw();
-      },
-      error: function() {
-        alert("Failed to load data.")
-      },
-      complete: function() {
-        $('#table_loading').css('visibility', 'hidden')
-      }
-    })
-  }
-})
+    $('#paintings_table').dataTable();
+    
+    $("#paintings_table").ready(function(){
+      loadPaintings('paintings_table');
+    });
+   
+    function loadPaintings(loading_div) {
+      $.ajax({
+        type: 'POST',
+        dataType: 'JSON',
+        cache: false,
+        url: "<%= load_paintings_path %>",
+        beforeSend: function() {
+          $("#table_loading").css('visibility', 'visible')
+        },
+        success: function(json){
+          $('#paintings_table').dataTable().fnClearTable();
+          $('#paintings_table').dataTable().fnAddData(json.data);
+          $('#paintings_table').dataTable().fnDraw();
+        },
+        error: function() {
+          alert("Failed to load data.")
+        },
+        complete: function() {
+          $('#table_loading').css('visibility', 'hidden')
+        }
+      });
+    }
+  });
 </script>
 <div class="row" style="background: white;">
 <div class="paintings">
 <h1>Paintings</h1>
 <div class="col-md-8">
-<div id="table_loading">
-Table data is loading
-</div>
 <table id="paintings_table" class="bootstrap_table">
   <thead>
   <tr>

@@ -30,8 +30,16 @@ Jackieart::Application.configure do
   config.action_mailer.delivery_method = :test
 
   # Raise exception on mass assignment protection for Active Record models
-  config.active_record.mass_assignment_sanitizer = :strict
+  # RAILS4 change: config.active_record.mass_assignment_sanitizer = :strict
+  
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+  
+  # RAILS4 change: execute test in random or sorted order
+  config.active_support.test_order = :random # or `:sorted` if you prefer
+  
+  # RAILS4 change: new config var
+  config.eager_load = false
+  
 end

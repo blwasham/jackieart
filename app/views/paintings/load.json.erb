@@ -1,14 +1,13 @@
 <% if @paintings.present? %>
   {
-    "aaData":[
+    "data": [
       <% @paintings.each_with_index do |painting, i| %>
-        {
-          "DT_RowId":"<%= painting.id %>",
-          "0":"<%= painting.name %>",
-          "1":"<%= painting.price %>",
-          "2":"<%= painting.featured %>",
-          "3":"actions here"
-        }
+        [
+          "<%= painting.name %>",
+          "<%= painting.price %>",
+          "<%= painting.featured %>",
+          "<%= escape_javascript(cl_image_tag(painting.image_name, :width => 50, :height => 75, :crop => :fill)) %>"
+        ]
         <% if i+1 != @paintings.length %>, <% end %>
       <% end %>
     ]

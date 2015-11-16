@@ -10,14 +10,13 @@
 
 # database config files
 db/schema.rb
-config/database.yml
-config/cloudinary.yml
-/db/*.sqlite3
-
-# Comment out these rules if you are OK with secrets being uploaded to the repo
-config/initializers/secret_token.rb
-config/secrets.yml
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Ignore application configuration
+/config/application.yml
+
+# Ignore iOS finder config file
+.DS_Store

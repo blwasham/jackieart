@@ -44,7 +44,13 @@
   </div>
   <div class="field">
     <%= label_tag :image_name %><br />
-    <%= f.cl_image_upload(:image_name, use_filename: true, unique_filename: false) %>
+    <%= f.cl_image_upload(
+          :image_name,
+          crop: :limit,
+          width: 1500,
+          height: 1000, 
+          use_filename: true, 
+          unique_filename: false) %>
     <div class="upload_status"></div>
     <div class="preview"></div>
   </div>

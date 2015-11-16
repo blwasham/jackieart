@@ -1,25 +1,29 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.21'
+gem 'rails', '4.2.3'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+gem 'pg'
+
+group :test do
+  gem 'shoulda-matchers'
+end
 
 group :development, :test do
   gem 'test-unit', '~> 3.0' # added b/c ruby 2.2 and rails requires as dependency
-  gem 'rspec-rails', '~> 3.0'
-  gem 'shoulda-matchers'
+  gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'pry'
 end
 
-gem 'sass-rails',   '~> 3.2.3'
-gem 'coffee-rails', '~> 3.2.1'
+gem 'sass-rails'
+gem 'coffee-rails'
 
 gem 'jquery-rails'
-gem 'jquery-datatables-rails', '~> 3.3.0'
+#gem 'jquery-datatables-rails'
+gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 gem 'font-awesome-sass'
 gem 'jquery-slick-rails'
 
@@ -32,7 +36,9 @@ gem 'money-rails'
 gem 'acts_as_list'
 gem 'cloudinary'
 
-
+gem 'web-console', '~> 2.0'
+gem 'awesome_print'
+gem 'figaro'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
