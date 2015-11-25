@@ -25,12 +25,13 @@ class PaintingsController < ApplicationController
   # POST /paintings.json
   def create
     @painting = Painting.new(painting_params)
-
-    if params[:image_name].present?
-
-      preloaded = Cloudinary::PreloadedFile.new(params[:image_name])         
+    
+    if params[:painting][:image_name].present?
+      preloaded = Cloudinary::PreloadedFile.new(params[:painting][:image_name])         
       raise "Invalid upload signature" if !preloaded.valid?
-      params[:painting][:image_name] = preloaded.identifier
+      @painting.image_name = preloaded.filename
+      
+      binding.pry
     end
 
     respond_to do |format|
@@ -59,6 +60,8 @@ class PaintingsController < ApplicationController
   # DELETE /paintings/1
   # DELETE /paintings/1.json
   def destroy
+    f = File.basename(@painting.image_name,File.extname(@painting.image_name))
+    Cloudinary::Uploader.destroy(f)
     @painting.destroy
     respond_to do |format|
       format.html { redirect_to paintings_url, notice: 'Painting was successfully destroyed.' }

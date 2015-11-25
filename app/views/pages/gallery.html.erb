@@ -14,87 +14,11 @@
 
   <ul id="grid" class="masonry grid effect-2">
     <div class="grid-sizer"></div>
-    <li class="m-item">
-      <%= image_tag "paintings/1.jpg" %>
-    </li>
-    <li class="m-item">
-      <%= image_tag "paintings/10.JPG" %>
-    </li>
-    <li class="m-item">
-      <%= image_tag "paintings/11.jpg" %>
-    </li>    
-    <li class="m-item">
-      <%= image_tag "paintings/12.jpg" %>
-    </li>
-    <li class="m-item">
-      <%= image_tag "paintings/2.JPG" %>
-    </li>
-    <li class="m-item">
-      <%= image_tag "paintings/3.jpg" %>
-    </li>  
-    <li class="m-item">
-      <%= image_tag "paintings/4.JPG" %>
-    </li>
-    <li class="m-item">
-      <%= image_tag "paintings/5.JPG" %>
-    </li>
-    <li class="m-item">
-      <%= image_tag "paintings/6.jpg" %>
-    </li>
-    <li class="m-item">
-      <%= image_tag "paintings/1.jpg" %>
-    </li>
-    <li class="m-item">
-      <%= image_tag "paintings/10.JPG" %>
-    </li>
-    <li class="m-item">
-      <%= image_tag "paintings/11.jpg" %>
-    </li>    
-    <li class="m-item">
-      <%= image_tag "paintings/12.jpg" %>
-    </li>
-    <li class="m-item">
-      <%= image_tag "paintings/2.JPG" %>
-    </li>
-    <li class="m-item">
-      <%= image_tag "paintings/3.jpg" %>
-    </li>  
-    <li class="m-item">
-      <%= image_tag "paintings/4.JPG" %>
-    </li>
-    <li class="m-item">
-      <%= image_tag "paintings/5.JPG" %>
-    </li>
-    <li class="m-item">
-      <%= image_tag "paintings/6.jpg" %>
-    </li>
-    <li class="m-item">
-      <%= image_tag "paintings/1.jpg" %>
-    </li>
-    <li class="m-item">
-      <%= image_tag "paintings/10.JPG" %>
-    </li>
-    <li class="m-item">
-      <%= image_tag "paintings/11.jpg" %>
-    </li>    
-    <li class="m-item">
-      <%= image_tag "paintings/12.jpg" %>
-    </li>
-    <li class="m-item">
-      <%= image_tag "paintings/2.JPG" %>
-    </li>
-    <li class="m-item">
-      <%= image_tag "paintings/3.jpg" %>
-    </li>  
-    <li class="m-item">
-      <%= image_tag "paintings/4.JPG" %>
-    </li>
-    <li class="m-item">
-      <%= image_tag "paintings/5.JPG" %>
-    </li>
-    <li class="m-item">
-      <%= image_tag "paintings/6.jpg" %>
-    </li>      
+    <% for painting in @paintings %>
+      <li class="m-item">
+        <%= cl_image_tag(painting.image_name, :crop => :fill) %>
+      </li>   
+    <% end %>
   </ul>
 
   <!-- Please call pinit.js only once per page -->

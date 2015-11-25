@@ -7,5 +7,5 @@
 
 # RAILS4 change ###
 #Jackieart::Application.config.secret_token = 'xxx'
-Jackieart::Application.config.secret_key_base = ENV['rails_secret_key']
+Jackieart::Application.config.secret_key_base = ENV['secret_key_base']
 # RAILS change ###

@@ -4,7 +4,7 @@ development:
   api_key: <%= ENV["cloudinary_key"] %>
   api_secret: <%= ENV["cloudinary_secret"] %>
   enhance_image_tag: true
-  static_image_support: false
+  static_image_support: true
 production:
   cloud_name: <%= ENV['cloudinary_username'] %>
   api_key: <%= ENV["cloudinary_key"] %>
@@ -16,4 +16,4 @@ test:
   api_key: <%= ENV["cloudinary_key"] %>
   api_secret: <%= ENV["cloudinary_secret"] %>
   enhance_image_tag: true
-  static_image_support: false
+  static_image_support: true

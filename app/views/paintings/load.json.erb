@@ -3,10 +3,11 @@
     "data": [
       <% @paintings.each_with_index do |painting, i| %>
         [
+          "<%= escape_javascript(cl_image_tag(painting.image_name, :width => 30, :crop => :fill)) %>",
           "<%= painting.name %>",
           "<%= painting.price %>",
           "<%= painting.featured %>",
-          "<%= escape_javascript(cl_image_tag(painting.image_name, :width => 50, :height => 75, :crop => :fill)) %>"
+          "<%= escape_javascript(link_to 'Destroy', painting, method: :delete, data: { confirm: 'Are you sure?' }) %>"
         ]
         <% if i+1 != @paintings.length %>, <% end %>
       <% end %>
