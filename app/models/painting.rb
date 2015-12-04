@@ -8,6 +8,7 @@ class Painting < ActiveRecord::Base
     }
   default_scope { order('position DESC') }
   scope :gallery_listing, -> { where.not(image_name: nil) } 
+  scope :featured, -> { where(featured: true) }
   
   validates :name, :image_name, presence: true, uniqueness: true
 end

@@ -1,20 +1,14 @@
 <div class="slick-carousel">
-  <div><%= image_tag "paintings/1.jpg" %></div>
-  <div><img data-lazy="<%= asset_path('paintings/Nightfall.jpg') %>" /></div>
-  <div><img data-lazy="<%= asset_path('paintings/11.jpg') %>" /></div>
-  <div><img data-lazy="<%= asset_path('paintings/8.JPG') %>" /></div>
-  <div><img data-lazy="<%= asset_path('photos/IMG_1153.JPG') %>" /></div>
+  <% featured_carousel %>
 </div>
 <script>
-  //$(document).ready(function(){
-    $('.slick-carousel').slick({
-      autoplay: true,
-      //arrows: false,
-      pauseOnHover: false,
-      autoplaySpeed: 5000,
-      fade: true,
-      cssEase: 'linear',
-      lazyLoad: 'progressive'
-    });
-  //});
+  $('.slick-carousel').slick({
+    autoplay: true,
+    //arrows: false,
+    pauseOnHover: false,
+    autoplaySpeed: 5000,
+    fade: true,
+    cssEase: 'linear',
+    lazyLoad: 'progressive'
+  });
 </script>

@@ -30,8 +30,6 @@ class PaintingsController < ApplicationController
       preloaded = Cloudinary::PreloadedFile.new(params[:painting][:image_name])         
       raise "Invalid upload signature" if !preloaded.valid?
       @painting.image_name = preloaded.filename
-      
-      binding.pry
     end
 
     respond_to do |format|

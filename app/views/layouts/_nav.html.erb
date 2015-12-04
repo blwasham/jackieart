@@ -15,8 +15,11 @@
       <li>
         <%= link_to "Home", home_path %>
       </li>
-      <li>
-        <%= link_to "Featured", featured_path %>
+      <% if featured? %>
+        <li>
+          <%= link_to "Featured", featured_path %>
+        </li>
+      <% end%>
       <li>
         <%= link_to "Gallery", gallery_path %>
       </li>
