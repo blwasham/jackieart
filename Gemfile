@@ -1,10 +1,11 @@
 source 'https://rubygems.org'
-
+ruby '2.2.3 '
 gem 'rails', '4.2.3'
-
+gem 'rails_12factor', group: :production
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'puma'
 gem 'pg'
 
 group :test do
@@ -12,6 +13,8 @@ group :test do
 end
 
 group :development, :test do
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'spring',        group: :development
   gem 'test-unit', '~> 3.0' # added b/c ruby 2.2 and rails requires as dependency
   gem 'rspec-rails'
   gem 'factory_girl_rails'
