@@ -81,8 +81,9 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-#production:
-#  <<: *default
-#  database: ruby-getting-started_production
-#  username: ruby-getting-started
-#  password: <%= ENV['RUBY-GETTING-STARTED_DATABASE_PASSWORD'] %>
+production:
+  <<: *default
+  database: ruby-getting-started_production
+  username: <%= ENV["pg_username"] %>
+  password: <%= ENV["pg_password"] %>
+  
