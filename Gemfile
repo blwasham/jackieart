@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 ruby '2.2.2'
 gem 'rails', '4.2.3'
 gem 'rails_12factor', group: :production
+gem 'activeresource', require: 'active_resource'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
