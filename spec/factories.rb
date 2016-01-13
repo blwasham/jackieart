@@ -1,9 +1,8 @@
-# This will guess the User class
 FactoryGirl.define do
   factory :painting do
-    name "Really Awesome Painting"
+    sequence(:name) { |n| "painting#{n}" }
     description "This is a really awesome painting"
     price_cents 100.00
-    image_name "really_awesome.jpg"
+    sequence(:image_name) { |n| "image#{n}.jpg" }
   end
 end

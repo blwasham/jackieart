@@ -20,6 +20,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'pry'
+  gem 'rspec_boolean'
 end
 
 gem 'sass-rails'

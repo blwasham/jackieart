@@ -1,5 +1,7 @@
 <div class="slick-carousel">
-  <% featured_carousel %>
+  <% for painting in @featured %>
+    <%= featured(painting) %>
+  <% end %>
 </div>
 <script>
   $('.slick-carousel').slick({

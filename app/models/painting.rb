@@ -11,4 +11,6 @@ class Painting < ActiveRecord::Base
   scope :featured, -> { where(featured: true) }
   
   validates :name, :image_name, presence: true, uniqueness: true
+  validates :featured, :inclusion => {:in => [true, false]}
+
 end
