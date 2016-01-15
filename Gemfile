@@ -21,6 +21,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'pry'
   gem 'rspec_boolean'
+  gem 'database_cleaner'
 end
 
 gem 'sass-rails'

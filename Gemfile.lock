@@ -69,6 +69,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1.1)
+    database_cleaner (1.5.1)
     debug_inspector (0.0.2)
     diff-lcs (1.2.5)
     domain_name (0.5.25)
@@ -231,6 +232,7 @@ DEPENDENCIES
   awesome_print
   cloudinary
   coffee-rails
+  database_cleaner
   factory_girl_rails
   figaro
   font-awesome-sass

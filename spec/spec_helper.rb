@@ -20,12 +20,6 @@ require 'rails_helper'
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
-
-# Destroy all models because they do not get destroyed automatically
-(ActiveRecord::Base.connection.tables - %w{schema_migrations}).each do |table_name|
-  ActiveRecord::Base.connection.execute "TRUNCATE TABLE #{table_name};"
-end
-
 # spec/spec_helper.rb
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
