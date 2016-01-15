@@ -18,6 +18,8 @@
 </script>
 
 <%= form_for(@painting) do |f| %>
+  <h3><%= form_title %></h3>
+  <h4><%= form_info_text %></h4>
   <% if @painting.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@painting.errors.count, "error") %> prohibited this painting from being saved:</h2>

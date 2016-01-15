@@ -28,6 +28,7 @@ gem 'sass-rails'
 gem 'coffee-rails'
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 #gem 'jquery-datatables-rails'
 gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 gem 'font-awesome-sass'

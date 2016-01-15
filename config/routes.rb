@@ -2,6 +2,7 @@ Jackieart::Application.routes.draw do
   resources :paintings do
     collection do
       post :load
+      post :reorder
     end
   end
 

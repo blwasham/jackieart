@@ -1,28 +1,20 @@
 class PaintingsController < ApplicationController
   before_action :set_painting, only: [:show, :edit, :update, :destroy]
 
-  # GET /paintings
-  # GET /paintings.json
   def index
     @painting = Painting.new
   end
 
-  # GET /paintings/1
-  # GET /paintings/1.json
   def show
   end
 
-  # GET /paintings/new
   def new
     @painting = Painting.new
   end
 
-  # GET /paintings/1/edit
   def edit
   end  
 
-  # POST /paintings
-  # POST /paintings.json
   def create
     @painting = Painting.new(painting_params)
     
@@ -41,8 +33,6 @@ class PaintingsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /paintings/1
-  # PATCH/PUT /paintings/1.json
   def update
     respond_to do |format|
       if @painting.update(painting_params)
@@ -55,8 +45,6 @@ class PaintingsController < ApplicationController
     end
   end
 
-  # DELETE /paintings/1
-  # DELETE /paintings/1.json
   def destroy
     f = File.basename(@painting.image_name,File.extname(@painting.image_name))
     Cloudinary::Uploader.destroy(f)
@@ -73,6 +61,11 @@ class PaintingsController < ApplicationController
     respond_to do |format|
       format.json
     end
+  end
+  
+  def reorder
+    @painting.insert_at(params[:position].to_i)
+    render json: {}
   end
   
 private

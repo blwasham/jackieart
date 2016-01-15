@@ -1,6 +1,6 @@
 <!-- move this to coffee script -->
 <script language="JavaScript">
-  $(document).ready(function(){
+  $(function(){
   
     $('#paintings_table').dataTable();
     
@@ -22,35 +22,66 @@
           $('#paintings_table').dataTable().fnAddData(json.data);
           $('#paintings_table').dataTable().fnDraw();
         },
-        error: function() {
-          alert("Failed to load data.")
+        error: function(data) {
+          if (data.responseText != "{[]}") {
+            alert("Failed to load data.")
+          }
         },
         complete: function() {
           $('#table_loading').css('visibility', 'hidden')
         }
       });
     }
+    
+    $("#paintings_table tbody").sortable({
+      cursor: "move",
+      update: function(event, ui) {
+        item_id = ui.item.attr("id")
+        new_position = ui.item.index() + 1;
+        
+        $.ajax({
+          type: 'POST',
+          dataType: 'JSON',
+          cache: false,
+          url: "<%= reorder_paintings_path %>",
+          data: {position: new_position, id: item_id},
+          beforeSend: function() {
+            $("#table_loading").css('visibility', 'visible')
+          },
+          success: function(json){
+            alert("it updated position");
+          },
+          error: function(){
+            alert("Unable to reorder item");
+          },
+          complete: function(){
+            $('#table_loading').css('visibility', 'hidden')
+          }
+        });
+      }
+      
+    })
   });
 </script>
 <div class="row" style="background: white;">
-<div class="paintings">
-<h1>Paintings</h1>
-<div class="col-md-8">
-<table id="paintings_table" class="bootstrap_table">
-  <thead>
-  <tr>
-    <th>Image</th>
-    <th>Name</th>
-    <th>Price</th>
-    <th>Featured</th>
-    <th>Actions</th>
-  </tr>
-  </thead>
-  <tbody>
-  </tbody>
-</table>
-</div>
-<div class="col-md-4">
-  <%= render 'form' %>
-</div>
+  <div class="paintings">
+    <h1>Paintings</h1>
+    <div class="col-md-8">
+      <table id="paintings_table" class="bootstrap_table">
+        <thead>
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Featured</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-4">
+      <%= render 'form' %>
+    </div>
 </div>

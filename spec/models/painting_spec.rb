@@ -30,7 +30,7 @@ describe Painting do
     let!(:p3) { create(:painting) }
     
     it "increments postions on save" do
-      expect(p2.position).to eq 3
+      expect(p2.position).to eq 2
     end
   end
 end

@@ -10,7 +10,7 @@ module PaintingsHelper
   
   def form_info_text
     action = new_form? ? "create a new" : "edit this"
-    text = "Use the folloing form to #{action} painting."
+    text = "Use the following form to #{action} painting."
     content_tag(:p,text)
   end
 end
