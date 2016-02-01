@@ -49,7 +49,7 @@
             $("#table_loading").css('visibility', 'visible')
           },
           success: function(json){
-            alert("it updated position");
+            ui.item.effect("highlight", {color: "#D1E2E5"}, 1000);
           },
           error: function(){
             alert("Unable to reorder item");
@@ -63,19 +63,21 @@
     })
   });
 </script>
-<div class="row" style="background: white;">
-  <div class="paintings">
-    <h1>Paintings</h1>
+<div class="paintings">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Paintings</h1>
+    </div>
     <div class="col-md-8">
       <table id="paintings_table" class="bootstrap_table">
         <thead>
-        <tr>
-          <th>Image</th>
-          <th>Name</th>
-          <th>Price</th>
-          <th>Featured</th>
-          <th>Actions</th>
-        </tr>
+          <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Featured</th>
+            <th>Actions</th>
+          </tr>
         </thead>
         <tbody>
         </tbody>
@@ -84,4 +86,5 @@
     <div class="col-md-4">
       <%= render 'form' %>
     </div>
+  </div>
 </div>

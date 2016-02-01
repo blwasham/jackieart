@@ -2,14 +2,15 @@
   {
     "data": [
       <% @paintings.each_with_index do |painting, i| %>
-        [
-          "<%= escape_javascript(cl_image_tag(painting.image_name, :width => 30, :crop => :fill)) %>",
-          "<%= painting.name %>",
-          "<%= painting.price %>",
-          "<%= painting.featured %>",
-          "<%= escape_javascript(link_to 'Destroy', painting, method: :delete, data: { confirm: 'Are you sure?' }) %>"
-        ]
-        <% if i+1 != @paintings.length %>, <% end %>
+        {
+          "DT_RowId": "<%= painting.id %>",
+          "0": "<%= escape_javascript(cl_image_tag(painting.image_name, :width => 30, :crop => :fill)) %>",
+          "1": "<%= painting.name %>",
+          "2": "<%= painting.price %>",
+          "3": "<%= painting.featured %>",
+          "4": "<%= escape_javascript(edit_link(painting)) %> <%= escape_javascript(destroy_link(painting)) %>"
+        }
+        <% if i + 1 != @paintings.length %>, <% end %>
       <% end %>
     ]
   }  

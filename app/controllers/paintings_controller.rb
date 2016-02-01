@@ -1,5 +1,5 @@
 class PaintingsController < ApplicationController
-  before_action :set_painting, only: [:show, :edit, :update, :destroy]
+  before_action :set_painting, only: [:show, :edit, :update, :destroy, :reorder]
 
   def index
     @painting = Painting.new
@@ -13,6 +13,7 @@ class PaintingsController < ApplicationController
   end
 
   def edit
+    render :index
   end  
 
   def create

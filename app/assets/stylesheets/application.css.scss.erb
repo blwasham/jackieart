@@ -10,7 +10,8 @@
 // custom sass vars
 $ja-white: #F8F8F8;
 $ja-green: #D1E2E5;
-$ja-green-dark: #467B85;
+$ja-green-light: #F2F7F8;
+$ja-green-dark: #6A959D;
 $ja-black: #181818;
 $ja-charcoal: #404040;
 $ja-nav-height: 44px;
@@ -232,12 +233,25 @@ a {
   color: $ja-green;
 }
 
+th {
+  background: $ja-green-dark;
+  color: $ja-white;
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td, tr.found{
+    background-color: $ja-green;
+}
 
 .bootstrap_table {
   @extend .table;
   @extend .table-striped;
   @extend .table-bordered;
   @extend .table-condensed;
+}
+
+/* fixes sortable bug where table columns not preserved when dragging */
+.ui-sortable-helper {
+    display:table;
 }
 
 

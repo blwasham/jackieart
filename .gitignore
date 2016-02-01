@@ -20,3 +20,8 @@ db/schema.rb
 
 # Ignore iOS finder config file
 .DS_Store
+
+# ignore batch_upload folder & files
+/batch_upload
+
+
