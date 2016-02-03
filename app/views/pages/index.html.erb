@@ -33,16 +33,22 @@
  
 	<div class="cd-scrolling-bg cd-color-2">
 		<div class="cd-container">
-			  <%= image_tag "jackie_at_bay.jpg", class: "about-img", crop: :fill %>
 
-        <div class="media-body">
-            <h2 class="media-heading">About Jackie</h2>
-          <p>
-            Growing up a stone’s throw from the Potomac River, Jacquelyn spent many of her days enjoying the river’s beauty. Stemming from those childhood impressions,she uses water and nature as constant subjects in her artwork which is painted mostly in oil, pastel, and watercolor. The artist prefersto demonstrate her subject matter through plein-air painting, where she can observe the intriguing nuances of nature and create a spiritual connection with her environment. Many of her works are completed on site in the Washington area, the Eastern Shore and Southern Maryland. Her paintings attempt to display in canvassed form the peace and stillness of nature trapped within the frantic pace of today’s society. Jacquelyn wants to capture and record a point in time that has moved her spirit, bring that interval to her viewers, and relive that moment with all those who observe her art.
-          </p>
-          <p>
-            Jacquelyn began her art career in Potomac, Maryland, when she was twelve under the guidance of Mr. Walt Bartman. Her love of art stems from a long line of family artists. Jacquelyn’s great great great grandfather, Jacques Jouvenal, carved the statue of Benjamin Franklin, located in front of the Old Post Office Pavilion on Pennsylvania Avenue, as well as the Bust of Aaron Burr in the Senate Chamber of the Capitol building in Washington D.C. Her great great grandfather, Rudolph Jouvenal, carved the capstone of the Washington Monument. While her ancestors mastered three-dimensional art forms, Jacquelyn tackles mostly two-dimensional art. Currently, she displays her work at Gallery 322 in Frederi, Maryland.
-          </p>
+        <div class="row">
+          <div class="col-md-3">
+            <%= image_tag "jackie_at_bay.jpg", class: "about-img", width: :auto %>
+          </div>
+          <div class="col-md-9">
+            <div class="media-body">
+                <h2 class="media-heading">About Jackie</h2>
+              <p>
+                Growing up a stone’s throw from the Potomac River, Jacquelyn spent many of her days enjoying the river’s beauty. Stemming from those childhood impressions,she uses water and nature as constant subjects in her artwork which is painted mostly in oil, pastel, and watercolor. The artist prefersto demonstrate her subject matter through plein-air painting, where she can observe the intriguing nuances of nature and create a spiritual connection with her environment. Many of her works are completed on site in the Washington area, the Eastern Shore and Southern Maryland. Her paintings attempt to display in canvassed form the peace and stillness of nature trapped within the frantic pace of today’s society. Jacquelyn wants to capture and record a point in time that has moved her spirit, bring that interval to her viewers, and relive that moment with all those who observe her art.
+              </p>
+              <p>
+                Jacquelyn began her art career in Potomac, Maryland, when she was twelve under the guidance of Mr. Walt Bartman. Her love of art stems from a long line of family artists. Jacquelyn’s great great great grandfather, Jacques Jouvenal, carved the statue of Benjamin Franklin, located in front of the Old Post Office Pavilion on Pennsylvania Avenue, as well as the Bust of Aaron Burr in the Senate Chamber of the Capitol building in Washington D.C. Her great great grandfather, Rudolph Jouvenal, carved the capstone of the Washington Monument. While her ancestors mastered three-dimensional art forms, Jacquelyn tackles mostly two-dimensional art. Currently, she displays her work at Gallery 322 in Frederi, Maryland.
+              </p>
+            </div>
+            </div>
         </div>
 		</div> 
 	</div> 
@@ -54,14 +60,20 @@
 	</div>
 	<div class="cd-scrolling-bg cd-color-2">
 		<div class="cd-container">
-			  <%= image_tag "jackie_at_potomac.jpg", class: "about-img", crop: :fill %>
-
-        <div class="media-body">
-            <h2 class="media-heading">About My Art</h2>
-          <p>
-            more stuff here
-          </p>
-        </div>
+		  <div class="row">
+		      <div class="col-md-3">
+		        <%#= image_tag "jackie_at_potomac.jpg", class: "about-img", crop: :fill %>
+		        <%= image_tag "jackie_at_potomac.jpg", class: "about-img", width: :auto %>
+		      </div>
+		      <div class="col-md-9">
+	          <div class="media-body">
+                <h2 class="media-heading">About My Art</h2>
+              <p>
+                Really cool stuff here about my art.
+              </p>
+            </div>
+	        </div> 
+		  </div>
 		</div> 
 	</div>
 	<div class="cd-fixed-bg cd-bg-4">

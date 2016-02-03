@@ -15,7 +15,7 @@
     <div class="grid-sizer"></div>
     <% for painting in @paintings %>
       <li class="m-item">
-        <%= cl_image_tag(painting.image_name, :crop => :fill) %>
+        <%= cl_image_tag(painting.image_name, width: :auto) %>
       </li>   
     <% end %>
   </ul>
