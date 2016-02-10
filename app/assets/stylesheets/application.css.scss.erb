@@ -146,13 +146,34 @@ a {
     @extend .img-responsive;
     width: 100%;
   }
-  .grid-sizer { width: 32%; }
-  .m-item {
-    margin-bottom: 10px; 
-    width: 32%;
-    cursor: pointer;
-    font-size: 12px;
-    color: $gray-light;
+  
+  @media (max-width: $screen-sm-min) { 
+    .masonry {
+      margin-right: 20px;
+    }
+    .grid-sizer { 
+      //width: 100%; 
+      margin: 10px;
+    }
+    .m-item {
+      margin-right: 15px;
+      margin-bottom: 10px; 
+      //width: 100%;
+      cursor: pointer;
+      font-size: 12px;
+      color: $gray-light;
+    }
+  }
+  
+  @media (min-width: $screen-sm-min) { 
+    .grid-sizer { width: 32%; }
+    .m-item {
+      margin-bottom: 10px; 
+      width: 32%;
+      cursor: pointer;
+      font-size: 12px;
+      color: $gray-light;
+    }
   }
 }
 

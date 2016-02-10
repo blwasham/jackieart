@@ -6,7 +6,7 @@ class Painting < ActiveRecord::Base
       greater_than_or_equal_to: 0,
       less_than_or_equal_to: 10000
     }
-  default_scope { order('position DESC') }
+  default_scope { order('position ASC') }
   scope :gallery_listing, -> { where.not(image_name: nil) } 
   scope :featured, -> { where(featured: true) }
   
