@@ -13,8 +13,8 @@ $ja-green: #D1E2E5;
 $ja-green-light: #F2F7F8;
 $ja-green-dark: #6A959D;
 $ja-black: #181818;
-$ja-charcoal: #404040;
-$ja-nav-height: 44px;
+$ja-charcoal: #353535; /* 404040 */
+$ja-nav-height: 46px;
 
 .green-text {color: $ja-green;}
 
@@ -44,9 +44,21 @@ a {
   a:hover { color: $ja-green; }
 }
 
+.navbar-brand {
+  font-family: 'Satisfy', cursive;
+  font-size: 25px;
+  text-shadow: 2px 2px #000;
+  padding: 14px 15px 12px 15px;
+  height: $ja-nav-height;
+}
+
 @media (max-width: $screen-sm-min) {
   .navbar {
     background-color: $ja-charcoal !important;
+    a { color: $ja-green; }
+  }
+  .navbar-brand {
+    color: $ja-green;
   }
   .nav>li>a, 
   .nav>li>a:focus,
@@ -78,16 +90,19 @@ a {
   color: $ja-green;
 }   
 
-.navbar-brand {
-  font-family: 'Satisfy', cursive;
-  font-size: 25px;
-  text-shadow: 2px 2px #000;
-  padding: 10px 15px;
-  height: $ja-nav-height;
+.navbar-toggle {
+    border: 1px solid $ja-green;
+    margin-bottom: 8px;
+    margin-top: 9px;
+    padding: 7px 8px;
+}
+
+.navbar-toggle:hover {
+  border: 1px solid $ja-white;
 }
 
 .navbar-toggle .icon-bar {
-  background-color: $ja-white;
+  background-color: $ja-green;
 }
 
 .about-img {
