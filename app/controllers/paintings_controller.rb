@@ -32,6 +32,11 @@ class PaintingsController < ApplicationController
   end
 
   def update
+    #TODO: remove existing image from cloudinary
+    # need to do some file name checking
+    # Cloudinary::Uploader.destroy('zombie', :invalidate => true)
+    # Cloudinary::Uploader.upload('new_zombie.jpg', :public_id => 'zombie', :invalidate => true)
+    
     respond_to do |format|
       if @painting.update(painting_params)
         format.html { render :index, notice: 'Painting was successfully updated.' }
