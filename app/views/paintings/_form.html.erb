@@ -43,7 +43,7 @@
   </div>
   <div class="field">
     <%= f.label :category %><br />
-    <%= f.select("category_id", Category.all.collect {|c| [ c.name, c.id ] }, {include_blank: 'None'}) %>
+    <%#= f.select("category_id", Category.all.collect {|c| [ c.name, c.id ] }, {include_blank: 'None'}) %>
   </div>
   <div class="field">
     <%= f.label :price %><br />
