@@ -3,6 +3,7 @@ class PaintingsController < ApplicationController
 
   def index
     @painting = Painting.new
+    @category = Category.new
   end
 
   def show
@@ -20,9 +21,7 @@ class PaintingsController < ApplicationController
     @painting = Painting.new(painting_params)
     
     if params[:painting][:image_name].present?
-      preloaded = Cloudinary::PreloadedFile.new(params[:painting][:image_name])         
-      raise "Invalid upload signature" if !preloaded.valid?
-      @painting.image_name = preloaded.filename
+      @painting.image_name = preloaded_filename
     end
 
     respond_to do |format|
@@ -76,5 +75,13 @@ private
   
   def painting_params
     params.require(:painting).permit(:name, :description, :price, :position, :image_name, :featured)
+  end
+  
+  def preloaded_filename
+    if Cloudinary::PreloadedFile.new(params[:painting][:image_name]).valid? 
+      preloaded.filename
+    else 
+      raise "Invalid upload signature"  
+    end
   end
 end

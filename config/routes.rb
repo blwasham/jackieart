@@ -1,4 +1,5 @@
 Jackieart::Application.routes.draw do
+  resources :categories
   resources :paintings do
     collection do
       post :load

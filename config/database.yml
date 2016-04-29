@@ -23,9 +23,10 @@ default: &default
 
 development:
   <<: *default
-  database: jackieart_dev
-  username: <%= ENV['pg_username'] %>
-  password: <%= ENV["pg_password"] %>
+  database: PG_PULL_TEST
+  #database: jackieart_dev
+  #username: <%= ENV['pg_username'] %>
+  #password: <%= ENV["pg_password"] %>
  
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.

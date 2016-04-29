@@ -24,6 +24,10 @@ describe Painting do
     end
   end
   
+  describe "associations" do
+    it { is_expected.to have_many :paintings_categories }
+  end
+  
   describe "acts_as_list" do
     let!(:p1) { create(:painting) }
     let!(:p2) { create(:painting) }

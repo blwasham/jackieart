@@ -1,6 +1,9 @@
 class Painting < ActiveRecord::Base
   acts_as_list
   
+  has_many :painting_categories
+  has_many :categories, through: :painting_categories
+  
   monetize :price_cents, allow_nil: true,
     numericality: {
       greater_than_or_equal_to: 0,
