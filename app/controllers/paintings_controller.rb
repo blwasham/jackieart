@@ -3,7 +3,6 @@ class PaintingsController < ApplicationController
 
   def index
     @painting = Painting.new
-    @category = Category.new
   end
 
   def show
@@ -56,7 +55,7 @@ class PaintingsController < ApplicationController
   end
 
   def load
-    @paintings = Painting.all
+    @paintings = Painting.all;
     
     respond_to do |format|
       format.json
