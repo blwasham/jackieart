@@ -9,7 +9,6 @@ class PaintingsController < ApplicationController
   end
 
   def new
-    @painting = Painting.new
   end
 
   def edit
@@ -25,7 +24,7 @@ class PaintingsController < ApplicationController
 
     respond_to do |format|
       if @painting.save
-        format.html { redirect_to paintings_path, notice: 'Painting was successfully created.' }
+        format.html { render :index, notice: 'Painting was successfully created.' }
       else
         format.html { render :index }
       end
@@ -35,11 +34,9 @@ class PaintingsController < ApplicationController
   def update
     respond_to do |format|
       if @painting.update(painting_params)
-        format.html { redirect_to @painting, notice: 'Painting was successfully updated.' }
-        format.json { render :show, status: :ok, location: @painting }
+        format.html { render :index, notice: 'Painting was successfully updated.' }
       else
         format.html { render :index }
-        format.json { render json: @painting.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -49,8 +46,10 @@ class PaintingsController < ApplicationController
     Cloudinary::Uploader.destroy(f)
     @painting.destroy
     respond_to do |format|
-      format.html { redirect_to paintings_url, notice: 'Painting was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { 
+        redirect_to paintings_url, 
+        notice: 'Painting was successfully destroyed.' 
+      }
     end
   end
 
@@ -73,14 +72,14 @@ private
   end
   
   def painting_params
-    params.require(:painting).permit(:name, :description, :price, :position, :image_name, :featured)
+    params.require(:painting).permit(:name, :description, :category_id, :price, :position, :image_name, :featured)
   end
   
   def preloaded_filename
-    if Cloudinary::PreloadedFile.new(params[:painting][:image_name]).valid? 
-      preloaded.filename
-    else 
-      raise "Invalid upload signature"  
-    end
+    if params[:painting][:image_name].present?
+      preloaded = Cloudinary::PreloadedFile.new(params[:painting][:image_name])         
+      raise "Invalid upload signature" if !preloaded.valid?
+      @painting.image_name = preloaded.filename
+    end 
   end
 end

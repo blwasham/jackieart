@@ -6,9 +6,10 @@
           "DT_RowId": "<%= painting.id %>",
           "0": "<%= escape_javascript(cl_image_tag(painting.image_name, :width => 30, :crop => :fill)) %>",
           "1": "<%= painting.name %>",
-          "2": "<%= painting.price %>",
-          "3": "<%= painting.featured %>",
-          "4": "<%= escape_javascript(edit_link(painting)) %> <%= escape_javascript(destroy_link(painting)) %>"
+          "2": "<%= painting.category.try(:name) %>",
+          "3": "<%= painting.price %>",
+          "4": "<%= painting.featured %>",
+          "5": "<%= escape_javascript(edit_link(painting)) %> <%= escape_javascript(destroy_link(painting)) %>"
         }
         <% if i + 1 != @paintings.length %>, <% end %>
       <% end %>
