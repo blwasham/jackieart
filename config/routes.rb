@@ -1,4 +1,5 @@
 Jackieart::Application.routes.draw do
+  devise_for :users
   resources :categories
   resources :paintings do
     collection do

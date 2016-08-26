@@ -1,4 +1,7 @@
-FactoryGirl.define do
+FactoryGirl.define do  factory :user do
+    
+  end
+
   factory :category do
     name "MyString"
     description "MyString"
