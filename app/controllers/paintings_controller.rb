@@ -9,7 +9,6 @@ class PaintingsController < ApplicationController
   end
 
   def new
-    @painting = Painting.new
   end
 
   def edit
@@ -20,14 +19,12 @@ class PaintingsController < ApplicationController
     @painting = Painting.new(painting_params)
     
     if params[:painting][:image_name].present?
-      preloaded = Cloudinary::PreloadedFile.new(params[:painting][:image_name])         
-      raise "Invalid upload signature" if !preloaded.valid?
-      @painting.image_name = preloaded.filename
+      @painting.image_name = preloaded_filename
     end
 
     respond_to do |format|
       if @painting.save
-        format.html { redirect_to paintings_path, notice: 'Painting was successfully created.' }
+        format.html { render :index, notice: 'Painting was successfully created.' }
       else
         format.html { render :index }
       end
@@ -35,13 +32,16 @@ class PaintingsController < ApplicationController
   end
 
   def update
+    #TODO: remove existing image from cloudinary
+    # need to do some file name checking
+    # Cloudinary::Uploader.destroy('zombie', :invalidate => true)
+    # Cloudinary::Uploader.upload('new_zombie.jpg', :public_id => 'zombie', :invalidate => true)
+    
     respond_to do |format|
       if @painting.update(painting_params)
-        format.html { redirect_to @painting, notice: 'Painting was successfully updated.' }
-        format.json { render :show, status: :ok, location: @painting }
+        format.html { render :index, notice: 'Painting was successfully updated.' }
       else
         format.html { render :index }
-        format.json { render json: @painting.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -51,13 +51,15 @@ class PaintingsController < ApplicationController
     Cloudinary::Uploader.destroy(f)
     @painting.destroy
     respond_to do |format|
-      format.html { redirect_to paintings_url, notice: 'Painting was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { 
+        redirect_to paintings_url, 
+        notice: 'Painting was successfully destroyed.' 
+      }
     end
   end
 
   def load
-    @paintings = Painting.all
+    @paintings = Painting.all;
     
     respond_to do |format|
       format.json
@@ -75,6 +77,14 @@ private
   end
   
   def painting_params
-    params.require(:painting).permit(:name, :description, :price, :position, :image_name, :featured)
+    params.require(:painting).permit(:name, :description, :category_id, :price, :position, :image_name, :featured)
+  end
+  
+  def preloaded_filename
+    if params[:painting][:image_name].present?
+      preloaded = Cloudinary::PreloadedFile.new(params[:painting][:image_name])         
+      raise "Invalid upload signature" if !preloaded.valid?
+      @painting.image_name = preloaded.filename
+    end 
   end
 end

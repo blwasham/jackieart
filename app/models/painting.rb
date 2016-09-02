@@ -1,4 +1,6 @@
 class Painting < ActiveRecord::Base
+  belongs_to :category
+
   acts_as_list
   
   monetize :price_cents, allow_nil: true,
@@ -12,5 +14,4 @@ class Painting < ActiveRecord::Base
   
   validates :name, :image_name, presence: true, uniqueness: true
   validates :featured, :inclusion => {:in => [true, false]}
-
 end

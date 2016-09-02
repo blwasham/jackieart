@@ -33,7 +33,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name %>
+    <span class="text-danger">*</span><br />
     <%= f.text_field :name %>
   </div>
   <div class="field">
@@ -41,11 +42,16 @@
     <%= f.text_field :description %>
   </div>
   <div class="field">
+    <%= f.label :category %><br />
+    <%= f.select("category_id", Category.all.collect {|c| [ c.name, c.id ] }, {include_blank: 'None'}) %>
+  </div>
+  <div class="field">
     <%= f.label :price %><br />
     <%= f.number_field :price %>
   </div>
   <div class="field">
-    <%= label_tag :image_name %><br />
+    <%= label_tag :image_name %>
+    <span class="text-danger">*</span><br />
     <%= f.cl_image_upload(
           :image_name,
           crop: :limit,
@@ -56,6 +62,10 @@
           folder: 'paintings') %>
     <div class="upload_status"></div>
     <div class="preview"></div>
+    <% if @painting.image_name %>
+      Current Image: <br />
+      <%= cl_image_tag(@painting.image_name, :width => 300, :crop => :fill) %>
+    <% end %>
   </div>
   <div class="field">
     <%= f.check_box :featured %>

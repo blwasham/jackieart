@@ -16,6 +16,14 @@
     <% for painting in @paintings %>
       <li class="m-item">
         <%= cl_image_tag(painting.image_name, width: :auto) %>
+        <div class="clearfix">
+          <div class="pull-left">
+            <%= painting.name %>
+          </div>
+          <div class="pull-right">
+            $<%= painting.price %>
+          </div>
+        </div>
       </li>   
     <% end %>
   </ul>
@@ -35,6 +43,7 @@
       gutter: 10,
       percentPosition: true   
     });
+    $('.grid').fadeIn();
   });
   
   $(function(){
